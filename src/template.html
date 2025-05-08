@@ -3,14 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Title</title>
+    <title>Weather</title>
   </head>
   <body>
     <header>
-      <h1>Project Title</h1>
+      <h1>HOW'S THE WEATHER TODAY</h1>
     </header>
 
-    <main></main>
+    <main>
+      <div class="form-container">
+        <form>
+          <div class="group">
+            <label for="location">Location</label>
+            <input type="text" id="location" />
+          </div>
+
+          <div class="group">
+            <label for="unit-group">Data Unit</label>
+            <select name="unit-group" id="unit-group">
+              <option value="us" selected>US ☼ °F/miles</option>
+              <option value="metric">Metric ☼ °C/km</option>
+              <option value="uk">UK ☼ °C/miles</option>
+            </select>
+          </div>
+
+          <button type="submit">Check</button>
+        </form>
+      </div>
+
+      <div class="weather-container">
+        <div class="icon"></div>
+        <span class="location"></span>
+        <span class="temperature"></span>
+        <span class="condition"></span>
+        <span class="description"></span>
+      </div>
+    </main>
 
     <footer>
       <span>

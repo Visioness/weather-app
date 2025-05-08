@@ -6,6 +6,53 @@
   box-sizing: border-box;
 }
 
+input,
+button,
+select {
+  background-color: #414141;
+  color: inherit;
+  border: 2px solid #ffffff55;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+a {
+  color: inherit;
+}
+
 body {
   height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+header,
+footer {
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 250px;
+  height: 250px;
+}
+
+.icon img {
+  width: 240px;
+  height: 240px;
 }
