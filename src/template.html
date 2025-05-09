@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather</title>
+    <title>Viseather</title>
   </head>
   <body>
     <header>
-      <h1>HOW'S THE WEATHER TODAY</h1>
+      <h1>Viseather</h1>
     </header>
 
     <main>
       <div class="form-container">
         <form>
           <div class="group">
-            <label for="location">Location</label>
-            <input type="text" id="location" />
+            <label for="input-location">Location</label>
+            <input type="text" id="input-location" />
           </div>
 
           <div class="group">
@@ -27,16 +27,35 @@
             </select>
           </div>
 
-          <button type="submit">Check</button>
+          <button type="submit" id="btn-submit">Check the Weather</button>
         </form>
       </div>
 
       <div class="weather-container">
-        <div class="icon"></div>
-        <span class="location"></span>
-        <span class="temperature"></span>
-        <span class="condition"></span>
-        <span class="description"></span>
+        <div id="icon-container"></div>
+
+        <div class="info-group" id="info-location">
+          <label for="location">Location</label>
+          <span id="location"></span>
+        </div>
+
+        <div class="info-group" id="info-temperature">
+          <label for="temperature">Temperature</label>
+          <span id="temperature">
+            <span id="value"></span>
+            <span id="unit"></span>
+          </span>
+        </div>
+
+        <div class="info-group" id="info-condition">
+          <label for="condition">Condition</label>
+          <span id="condition"></span>
+        </div>
+
+        <div class="info-group" id="info-description">
+          <label for="description">Description</label>
+          <span id="description"></span>
+        </div>
       </div>
     </main>
 
