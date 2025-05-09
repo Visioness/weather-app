@@ -1,0 +1,319 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-Light.373c35ea55e421fcdd65.ttf);
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-LightItalic.ab289d3619f6b8468e0e.ttf);
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-Regular.8b7bbfcc7285a2757ff5.ttf);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-Bold.ee8625a056ad24ea12ed.ttf);
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-Italic.1f416671d7969b274bcb.ttf);
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansation';
+  src: url(../assets/fonts/Sansation-BoldItalic.ba1526e2847e916f4538.ttf);
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* CSS Reset */
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input,
+button,
+select {
+  background-color: #414141;
+  color: inherit;
+  border: 2px solid #ffffff55;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-style: italic;
+}
+
+a {
+  color: rgba(0, 195, 255, 0.8);
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: rgba(39, 204, 255, 1);
+}
+
+/* Changes */
+
+body {
+  font-family: 'Sansation';
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: #121212;
+  color: #d8d8d8;
+}
+
+header,
+footer {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(255, 78, 8);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-shadow: 0 0 12px rgb(196, 89, 1);
+  letter-spacing: 1rem;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+
+.form-container {
+  width: 100%;
+}
+
+form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.group {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 4px;
+}
+
+#btn-submit {
+  padding: 4px 24px;
+  grid-column: span 2;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+#btn-submit:hover {
+  background-color: rgba(0, 195, 255, 0.2);
+  border-color: rgba(0, 195, 255, 0.4);
+}
+
+.weather-container {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  grid-template-columns: repeat(3, minmax(200px, 20%));
+  grid-template-areas:
+    'icon icon icon'
+    'location temp condition'
+    'desc desc desc';
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+#icon-container {
+  grid-area: icon;
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Use ::before for night mode */
+#icon-container::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(94, 155, 199, 0.8) 0%,
+    rgba(18, 51, 73, 0.8) 50%,
+    rgba(0, 7, 14, 0.8) 100%
+  );
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+/* Use ::after for day mode */
+#icon-container::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(223, 243, 252, 0.8) 0%,
+    rgba(97, 180, 212, 0.8) 50%,
+    rgba(0, 57, 107, 0.8) 100%
+  );
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+#icon-container.day::after {
+  opacity: 1;
+}
+
+#icon-container.night::before {
+  opacity: 1;
+}
+
+#icon-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: bottom;
+  transform: rotate(180deg) scale(0.5);
+  opacity: 0;
+}
+
+#icon-container img.animate-rotate-in {
+  animation: rotate-in 2s ease-in-out forwards;
+}
+
+#icon-container img.animate-rotate-out {
+  animation: rotate-out 2s ease-in-out forwards;
+}
+
+.info-group {
+  display: grid;
+  grid-template-rows: 2fr 3fr;
+  grid-template-columns: 1fr;
+  background-color: #242424;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.info-group > label {
+  width: 100%;
+  padding: 4px 12px;
+  background-color: rgba(0, 195, 255, 0.1);
+  border-radius: 18px 18px 0 0;
+  border-bottom: 2px solid rgba(0, 195, 255, 0.3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(255, 156, 8);
+  text-shadow: 0 0 2px rgb(166, 196, 1);
+}
+
+.info-group > span {
+  padding: 4px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  gap: 10px;
+}
+
+#info-location {
+  grid-area: location;
+}
+
+#info-temperature {
+  grid-area: temp;
+}
+
+#info-condition {
+  grid-area: condition;
+}
+
+#info-description {
+  grid-area: desc;
+}
+
+@keyframes rotate-in {
+  from {
+    transform: rotate(180deg) scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate(-180deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+/*# sourceMappingURL=main.36c857785f560631e83a.css.map*/
